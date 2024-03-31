@@ -1,0 +1,38 @@
+<div class="container mt-2">
+  <div class="card" *ngIf="customerDetails">
+    <div class="card-header">customer Details : {{customerDetails.basedCustomerId}}</div>
+    <div class="card-body">
+      <div class="card-body" >
+        <ul class="list-group">
+          <li class="list-group-item"> First Name : {{customerDetails.firstName}}</li>
+          <li class="list-group-item"> Last Name : {{customerDetails.lastName}}</li>
+          <li class="list-group-item"> Email : {{customerDetails.email}}</li>
+        </ul>
+        <div>
+
+        </div>
+        <table class="table table-active">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>State</th>
+            <th>Amount</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let order of customerDetails.orders">
+            <td>{{order.id}}</td>
+            <td>{{order.date}}</td>
+            <td>{{order.state}}</td>
+            <td>{{getTotal(order)| number: '0.2-2'}}</td>
+            <td>
+              <button class="btn btn-outline-warning" (click)="getOrder(order)">Details</button>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
